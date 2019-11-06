@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const difficultLevel = ['Easy','Normal','Difficult']
+const difficultLevel = ['Easy','Normal','Difficult'];
 
 const Meal = new Schema({
   idMeal: {type: Number},
@@ -11,7 +11,7 @@ const Meal = new Schema({
   mealThumb: {type: String},
   tags: [{
     tag: {type:String},
-    }
+  }
   ],
   youtube: {type: String},
   ingredients: [{
@@ -25,7 +25,7 @@ const Meal = new Schema({
   difficulty: {type:String, default: difficultLevel[randomNumber(0,2)]}
 });
 
-function randomNumber(min, max) {  
+function randomNumber (min, max) {  
   min = Math.ceil(min); 
   max = Math.floor(max); 
   return Math.floor(Math.random() * (max - min + 1)) + min; 
@@ -33,4 +33,4 @@ function randomNumber(min, max) {
 
 
 
-module.exports = mongoose.model("Meal", Meal);
+module.exports = mongoose.model('Meal', Meal);

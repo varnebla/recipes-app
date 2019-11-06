@@ -17,9 +17,8 @@ const Ingredient = require('../models/ingredient');
 
 exports.getIngredients = async (ctx) => {
   try {
-    console.log(ctx)
-    ctx.body = await Ingredient.find();
-    console.log(ctx.body);
+    const ingredients = await Ingredient.find();
+    ctx.body = ingredients;    
     ctx.status = 200;    
   } catch (error) {
     ctx.status = 500;

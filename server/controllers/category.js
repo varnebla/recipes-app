@@ -1,16 +1,15 @@
 const Category = require('../models/category');
 
-exports.PostCategory = async (ctx) => {
-  try {
-    const categories = await Category.insertMany(ctx.request.body);
-    console.log(categories);
-    ctx.body= categories;
-    ctx.status = 201;    
-  } catch (error) {
-    ctx.status = 500;
-    console.error(error);
-  }
-};
+// exports.PostCategory = async (ctx) => {
+//   try {
+//     const categories = await Category.insertMany(ctx.request.body);
+//     ctx.body = categories;
+//     ctx.status = 201;    
+//   } catch (error) {
+//     ctx.status = 500;
+//     console.error(error);
+//   }
+// };
 
 exports.getCategories = async (ctx) => {
   try {

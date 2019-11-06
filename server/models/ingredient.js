@@ -8,4 +8,4 @@ const Ingredient = new Schema({
   description: {type: String}
 });
 
-module.exports = mongoose.model("Ingredient", Ingredient);
+module.exports = mongoose.model('Ingredient', Ingredient);

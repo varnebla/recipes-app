@@ -2,11 +2,11 @@ import React from 'react';
 import './style.css';
 import {NavLink} from 'react-router-dom';
 
-function NavigationBar() {
+function NavigationBar () {
   return (
     <div className="App">
-     <NavLink to="/">Discover</NavLink>
-     <NavLink to="/Categories">Categories</NavLink>     
+      <NavLink to="/Discover">Discover</NavLink>
+      <NavLink to="/Categories">Categories</NavLink>     
     </div>
   );
 }

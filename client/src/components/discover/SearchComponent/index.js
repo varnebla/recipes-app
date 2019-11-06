@@ -1,10 +1,11 @@
 import React from 'react';
 import './style.css';
 
-function Search() {
+function Search () {
+
   return (
     <div className="search">
-     
+      <input type="text"/>
     </div>
   );
 }

@@ -10,7 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^2.2.3",
+    "babel": "^6.23.0",
     "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-json": "1.2.1",
+    "eslint-plugin-react": "7.11.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-logger": "^3.2.1",

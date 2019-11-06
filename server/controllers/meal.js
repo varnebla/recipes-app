@@ -24,20 +24,20 @@ exports.mealConverter = async (ctx) => {
         const arrayOfmeasures = _.filter(el, (el, key) => key.replace(/\d+$/, '') === 'strMeasure');
         
         ingIds.forEach((el,key) => {
-            meal.ingredients.push({
+          meal.ingredients.push({
             id: el,
             quantity: arrayOfmeasures[key]
           });
         });
         arrMeal.push(meal);
-        console.log(meal)
+        console.log(meal);
       });
-      console.log(arrMeal)
+      console.log(arrMeal);
       await Meal.insertMany(arrMeal);
       // ctx.body= response;
       // ctx.status= 201;
       
-    }
+    };
 
     fillArrayMeal();
     
@@ -48,33 +48,50 @@ exports.mealConverter = async (ctx) => {
   
 
 
-}
+};
 
-async function asyncForEach(array, callback) {
+async function asyncForEach (array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
 }
 
 exports.getRandomMeals = async (ctx) => {
-  const meals = await Meal.find();
-  const ids = meals.map(el=> el.idMeal);
-  const randomArray = [];
-  for (let i = 0; i<5 ; i++) {
-    randomArray.push(ids[randomNumber(0, ids.length-1)]);
+  try {
+    const randomArray = [];
+    const meals = await Meal.find();
+    const ids = meals.map(el=> el.idMeal);
+    for (let i = 0; i<5 ; i++) {
+      randomArray.push(ids[randomNumber(0, ids.length-1)]);
+    }
+    console.log(randomArray); //eslint-disable-line no-console
+    let randomMeals = await Meal.find({'idMeal': {$in: randomArray}});
+    ctx.body = randomMeals;
+    ctx.status = 200;    
+  } catch (error) {
+    console.error(error);
+    ctx.status = 500;
   }
-  console.log(randomArray);
-  let randomMeals = await Meal.find({'idMeal': {$in: randomArray}});
-  ctx.body = randomMeals;
-}
+};
 
-function randomNumber(min, max) {  
+exports.getMeals = async (ctx) => {
+  try {
+    const meals = await Meal.find();
+    ctx.body = meals;
+    ctx.status = 200;
+  } catch (error) {
+    ctx.status = 500;
+    console.error(error);
+  }
+};
+
+function randomNumber (min, max) {  
   min = Math.ceil(min); 
   max = Math.floor(max); 
   return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
-
-function capitalizeName (name){
+//TODO REMOVE
+function capitalizeName (name) {
   let arr = name.split(' ');
   arr = arr.map(el => {
     el = el.charAt(0).toUpperCase() + el.slice(1);
@@ -99,3 +116,12 @@ function tagify (tags) {
   arr.forEach(el => result.push({tag: el}));
   return result;
 }
+
+
+//TODO REMOVE
+const updateData = (list) => {
+  return list.reduce((acc, recipe) => ({
+    ...acc,
+    [recipe.idMeal]: recipe
+  }));
+};
