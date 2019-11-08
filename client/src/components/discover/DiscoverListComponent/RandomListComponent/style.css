@@ -1,0 +1,8 @@
+.random_list {
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}

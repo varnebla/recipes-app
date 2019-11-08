@@ -1,0 +1,24 @@
+.recipe_details_container{
+    
+}
+
+.recipe_details{
+  width:100%;
+  border-radius: 5px;  
+}
+
+.flex_center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.space_evenly{
+  justify-content: space-evenly;
+}
+
+.space_around{
+  justify-content: center;
+}
+
+

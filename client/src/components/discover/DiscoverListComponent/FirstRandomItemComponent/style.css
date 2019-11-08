@@ -1,0 +1,18 @@
+.card_recipe{
+  margin-bottom: 5vh
+}
+
+.first_random_item{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 65vh;
+  width: 100%;
+}
+
+.recipe_info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}

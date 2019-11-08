@@ -7,9 +7,9 @@ import './style.css';
 
 
 function DiscoverList ({recipes}) {
-
-  const list = recipes.map(el => <h3 key={el.idMeal}>{el.name}</h3>);
   const firsItem = <FirstRandomItem recipe={recipes[0]}></FirstRandomItem>;
+  recipes.shift();
+  const list = <RandomList recipes={recipes}/>;
 
   return (
     <div className="discover_list">

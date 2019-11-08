@@ -74,16 +74,31 @@ exports.getRandomMeals = async (ctx) => {
   }
 };
 
-exports.getMeals = async (ctx) => {
+exports.getMeal = async (ctx) => {
   try {
-    const meals = await Meal.find();
-    ctx.body = meals;
+    const id = ctx.params.id;
+    const meal = await Meal.findOne({idMeal: id});
+    ctx.body = meal;
     ctx.status = 200;
   } catch (error) {
     ctx.status = 500;
     console.error(error);
   }
 };
+
+exports.getMealByCategory = async (ctx) => {
+  try {
+    const id = ctx.params.id;
+    console.log(id);
+    const meals = await Meal.find({categories: { $elemMatch: {id: id}}});
+    ctx.body = meals;
+    ctx.status = 200;
+  } catch (error) {    
+    ctx.status = 500;
+    console.error(error);
+  }
+};
+
 
 function randomNumber (min, max) {  
   min = Math.ceil(min); 

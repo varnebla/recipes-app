@@ -1,0 +1,26 @@
+.category_item{
+
+}
+
+.category_item_media{
+  max-width: 150%;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(75%) brightness(80%) blur(1px);
+  transition: max-width 1s; 
+}
+.category_item_media:hover{
+  filter:none;
+  max-width:160%;
+}
+
+.category_tile_bar{
+  background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%) !important;
+  font-weight: 400;
+}
+
+
+@media  (max-width: 1024px) {
+  .category_item_media{
+    filter:none;
+  }
+}

@@ -1,0 +1,12 @@
+
+
+.random_item{
+  max-width: 3000px;
+}
+
+
+.title_picture{
+  width: 100%;
+  white-space: wrap;
+  background-color: rgba(255,255,255,0.5);
+}

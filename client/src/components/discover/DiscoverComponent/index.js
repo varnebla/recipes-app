@@ -4,6 +4,7 @@ import Search from '../SearchComponent';
 import DiscoverList from '../DiscoverListComponent';
 import { getData } from '../../../ApiClient';
 
+import Container from '@material-ui/core/Container';
 import './style.css';
 
 function Discover () {
@@ -25,13 +26,17 @@ function Discover () {
   }, []);
   
   return (
-    <div className="discover">
+    <Container maxWidth="sm" className="discover">
+
       <Search></Search>
+
+
       {
         recipes.length > 0 &&
         <DiscoverList recipes={recipes}></DiscoverList>
       }
-    </div>
+
+    </Container>
   );
 }
 
