@@ -21,17 +21,14 @@ exports.getCategories = async (ctx) => {
   }
 };
 
-// exports.postIngredient = async (ctx) => {
-//   try {
-//     console.log(ctx.request.body);
 
-//     let banana = await Ingredient.insertMany(ctx.request.body);
-//     console.log(banana)
-//     ctx.body = banana
-//     console.log(ctx.body);
-//     ctx.status = 201;    
-//   } catch (error) {
-//     ctx.status = 500;
-//     console.error(error);
-//   }
-// };
+exports.getCategoryByName = async (ctx) => {
+  try {
+    const ids = ctx.params.ids;
+    ctx.body = await Category.find({id: {$in: {ids}}});
+    ctx.status = 200;
+  } catch (error) {
+    ctx.status=500;
+    console.error(error);
+  }
+};

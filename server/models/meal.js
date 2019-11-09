@@ -15,11 +15,11 @@ const Meal = new Schema({
   ],
   youtube: {type: String},
   ingredients: [{
-    id: {type: Number},
+    id: {type: Number },
     quantity: {type: String}
   }],
   categories:[{
-    id:{type: Number}
+    id:{type: Number }
   }],
   time: {type: Number, default: Math.ceil(randomNumber(15,120)/5)*5},
   difficulty: {type:String, default: difficultLevel[randomNumber(0,2)]}

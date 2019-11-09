@@ -1,5 +1,6 @@
 const Meal = require('../models/meal');
 const Ingredient = require('../models/ingredient');
+const Category = require('../models/category');
 const _ = require('lodash');
 
 exports.mealConverter = async (ctx) => {
@@ -77,8 +78,21 @@ exports.getRandomMeals = async (ctx) => {
 exports.getMeal = async (ctx) => {
   try {
     const id = ctx.params.id;
-    const meal = await Meal.findOne({idMeal: id});
-    ctx.body = meal;
+    
+    let recipe = {};
+    recipe.meal = await Meal.findOne({idMeal: id});
+
+    
+    const ingredients = recipe.meal.ingredients.map(el => el.id);
+    recipe.ingredients = await Ingredient.find({id: {$in: ingredients}});
+    
+
+    const categories = recipe.meal.categories.map(el => el.id);
+    recipe.categories = await Category.find({id: {$in: categories}});
+    
+    console.log(recipe);
+
+    ctx.body = recipe;
     ctx.status = 200;
   } catch (error) {
     ctx.status = 500;

@@ -17,8 +17,10 @@
   justify-content: space-evenly;
 }
 
-.space_around{
+.centered{
   justify-content: center;
 }
 
-
+.circular_progress{
+  margin-top:50%;
+}

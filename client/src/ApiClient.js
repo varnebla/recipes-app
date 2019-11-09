@@ -7,7 +7,7 @@ const fetchRequest = (path, options) => {
 };
 
 
-exports.getData = (name, ...args) => {
+exports.getData = (name, args) => {
   switch (name) {
   case 'random':
     return fetchRequest('/random');
@@ -19,6 +19,10 @@ exports.getData = (name, ...args) => {
     return fetchRequest(`/listcat/${args}`);  
   case 'recipe':
     return fetchRequest(`/recipe/${args}`);  
+  case 'categoryById':
+    return fetchRequest(`/catbyid/${args}`);  
+  case 'ingredientById':
+    return fetchRequest(`/ingbyid/${args}`);  
   default:
     break;
   }
