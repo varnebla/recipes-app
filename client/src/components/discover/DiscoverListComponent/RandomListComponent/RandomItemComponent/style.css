@@ -1,12 +1,12 @@
-
-
-.random_item{
-  max-width: 3000px;
+.random_item_media{
+  max-width: 100%;
+  transition: all 1s ease-out;
 }
 
 
-.title_picture{
-  width: 100%;
-  white-space: wrap;
-  background-color: rgba(255,255,255,0.5);
+.random_item_container:hover .random_item_media{
+  transform: scale(1.1,1.1);
+}
+.random_item_container:hover .recipe_tile_bar{
+  height: 100px;
 }

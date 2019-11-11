@@ -1,7 +1,3 @@
-.recipe_details_container{
-    
-}
-
 .recipe_details{
   width:100%;
   border-radius: 5px;  
@@ -17,6 +13,14 @@
   justify-content: space-evenly;
 }
 
+.tag_list{
+  flex-wrap: wrap;
+}
+
+.tag_chips{
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
 .centered{
   justify-content: center;
 }

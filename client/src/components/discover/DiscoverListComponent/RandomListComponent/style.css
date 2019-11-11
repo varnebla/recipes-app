@@ -1,8 +1,15 @@
-.random_list {
+.random_list_container{
   display: flex;
-  overflow: auto;
-  white-space: nowrap;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
+  flex-wrap:nowrap;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.random_list {
+  flex-wrap: nowrap !important;
+  transform: translateZ(0);
+}
+
+.random_item_tile{
+  border-radius:5px;
 }

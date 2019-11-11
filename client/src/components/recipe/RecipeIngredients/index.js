@@ -44,7 +44,7 @@ function RecipeDetails ({ingredients, quantities}) {
         expandIcon={<ExpandMoreIcon />}
         aria-controls="ingredients-content"
         id="ingredients-header">
-        <Typography variant="h5">Ingredients</Typography>                
+        <Typography variant="h6">Ingredients</Typography>                
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <List>

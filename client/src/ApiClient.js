@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'http://192.168.1.130:3001';
 
 const fetchRequest = (path, options) => {
   return fetch(BASE_URL + path, options)
@@ -23,6 +23,10 @@ exports.getData = (name, args) => {
     return fetchRequest(`/catbyid/${args}`);  
   case 'ingredientById':
     return fetchRequest(`/ingbyid/${args}`);  
+  case 'mealByIngredient':
+    return fetchRequest(`/mealbying/${args}`);  
+  case 'mealByTag':
+    return fetchRequest(`/mealbytag/${args}`);  
   default:
     break;
   }

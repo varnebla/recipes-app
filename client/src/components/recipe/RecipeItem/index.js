@@ -19,7 +19,7 @@ function RecipeItem ({recipe}) {
   return (
     <div className="recipe_item">
       <Link to={{pathname: `/Recipes/${recipe.idMeal}`}} onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
-        <img src={recipe.mealThumb} className="recipe_item_media"></img>
+        <img src={recipe.mealThumb} className="recipe_item_media" alt={recipe.name}></img>
         <GridListTileBar 
           title={recipe.name} 
           className="recipe_tile_bar"

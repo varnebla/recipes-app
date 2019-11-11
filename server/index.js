@@ -18,10 +18,10 @@ app.use(cors())
 
   
   
-  mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }, () => {
-    console.log(`🔥DB is on fire on ${dbUrl}`);
-    app.listen(PORT, console.log(`🚀Listening to http://localhost:${PORT}`));
-  });
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, () => {
+  console.log(`🔥DB is on fire on ${dbUrl}`);
+  app.listen(PORT, console.log(`🚀Listening to http://localhost:${PORT}`));
+});

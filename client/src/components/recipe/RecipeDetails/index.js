@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import theme from '../../../ThemeProvider';
 
 import { getData } from '../../../ApiClient';
 import RecipeIngredients from '../RecipeIngredients';
@@ -14,6 +16,7 @@ import TimerSharpIcon from '@material-ui/icons/TimerSharp';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 
 import './style.css';
+import { ThemeProvider } from '@material-ui/styles';
 
 function RecipeDetails ({match}) {
   const [recipe, setRecipe] = useState([]);
@@ -38,10 +41,19 @@ function RecipeDetails ({match}) {
   const quantities = recipe.ingredients;
 
   const tagList = recipe.tags ? recipe.tags.map(el =>
-    <Chip key={el.tag} label={el.tag} /> 
+    <Chip 
+      component={Link} 
+      to={{pathname: `/Recipes/Tags/${el.tag}`}}
+      key={el.tag} 
+      label={'# ' + el.tag} 
+      clickable 
+      className="tag_chips"
+      color="primary"/> 
   ) : null;
+
   const categoryList = categories.map(el => 
-    <Typography key={el.id} variant="subtitle1">{el.name.toUpperCase()}</Typography>
+    <Chip variant="outlined" key={el.id} label={el.name.toUpperCase()} color="secondary" />
+    // <Typography key={el.id} variant="subtitle1">{el.name.toUpperCase()}</Typography>
   );
 
   let directions = [];
@@ -55,28 +67,32 @@ function RecipeDetails ({match}) {
 
 
   return (
+   
     <Container maxWidth="sm" className="recipe_details_container">
       {
         recipe.name
-          ?<Grid container alignContent="space-between" spacing={2}>
-            <Grid item xs={12}>
+          ?<Grid container justify="center" spacing={3}>
+            <Grid item xs={12}>            
               <Typography variant="h5">{recipe.name}</Typography>
             </Grid>
             <Grid item xs={12} className="flex_center space_evenly">
               {categoryList}
             </Grid>
             <Grid item>
-              <img className="recipe_details" src={recipe.mealThumb}></img>
+              <img className="recipe_details" src={recipe.mealThumb} alt={recipe.name}></img>
             </Grid>
             <Grid item xs={6} className="flex_center space_evenly">
-              <TimerSharpIcon />
-              <Typography variant="h6">{recipe.time} min</Typography>
+              <Chip variant="outlined" label={recipe.time + ' min'} color="secondary" icon={<TimerSharpIcon />} />
+              {/* <TimerSharpIcon />
+                <Typography variant="h6">{recipe.time} min</Typography> */}
+
             </Grid>
             <Grid item xs={6} className="flex_center space_evenly">
-              <RestaurantIcon/>
-              <Typography variant="h6">{recipe.difficulty}</Typography>
+              <Chip variant="outlined" label={recipe.difficulty} color="secondary" icon={<RestaurantIcon />} />
+              {/* <RestaurantIcon/>
+              <Typography variant="h6">{recipe.difficulty}</Typography> */}
             </Grid>
-            <Grid item xs={12} className="flex_center space_evenly">
+            <Grid item xs={10} sm={10} className="flex_center centered tag_list">
               {tagList && tagList}
             </Grid>
             <Grid item xs={12}>

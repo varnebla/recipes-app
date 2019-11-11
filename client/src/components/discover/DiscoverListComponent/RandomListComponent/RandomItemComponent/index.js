@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import {Link} from 'react-router-dom';
+import Grow from '@material-ui/core/Grow';
+import Typography from '@material-ui/core/Typography';
 import './style.css';
 
 function RandomItem ({recipe}) {
-  return (
-    <Card className="random_item">
-      <CardActionArea>
-        <CardMedia
-          image={recipe.mealThumb}
-          title={recipe.name}
-          className=""
-          height="200px"
-          component="img">
-          {/* <div className="title_picture">
-            <h3>{recipe.name}</h3>
-          </div> */}
+  const [hover, setHover] = useState(false);
 
-        </CardMedia>
-      </CardActionArea>
-    </Card>
-    // <div className="random_item" style={{backgroundImage: `url(${recipe.mealThumb})`}}>
-    // </div>
+  const toggleHover = () => {
+    setHover(prev=> !prev);
+  };
+  return (
+    <div className="random_item_container">
+      <Link to={{pathname: `/Recipes/${recipe.idMeal}`}} onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
+        <img src={recipe.mealThumb} className="random_item_media" alt={recipe.name}></img>
+        <GridListTileBar 
+          title={recipe.name} 
+          className="recipe_tile_bar"
+          subtitle={
+            <Grow in={hover} style={{ transitionDelay: hover ? '50ms' : '0ms' }}>
+              <div className="recipe_item_subtitle">
+                <Typography variant="subtitle1">{recipe.time} min</Typography>
+                <Typography variant="subtitle2">{recipe.difficulty}</Typography>
+              </div>
+            </Grow>
+          }
+        />    
+      </Link>
+    </div>
   );
 }
 

@@ -62,7 +62,7 @@ exports.getRandomMeals = async (ctx) => {
     const randomArray = [];
     const meals = await Meal.find();
     const ids = meals.map(el=> el.idMeal);
-    for (let i = 0; i<5 ; i++) {
+    for (let i = 0; i<8 ; i++) {
       randomArray.push(ids[randomNumber(0, ids.length-1)]);
     }
     console.log(randomArray); //eslint-disable-line no-console
@@ -109,6 +109,32 @@ exports.getMealByCategory = async (ctx) => {
     ctx.status = 200;
   } catch (error) {    
     ctx.status = 500;
+    console.error(error);
+  }
+};
+
+exports.getMealByIngredients = async ctx => {
+  try {
+    const names = JSON.parse(ctx.params.names);
+    const ingredients = await Ingredient.find({name: {$in: names}});
+    const ingIds = ingredients.map(el => el.id);
+    const meals = await Meal.find({'ingredients.id': {$all: ingIds}});
+    ctx.body= meals;
+    ctx.status = 200
+  } catch (error) {
+    ctx.status=500;
+    console.error(error);
+  }
+};
+
+exports.getMealByTag = async ctx => {
+  try {
+    const tag = ctx.params.tags;
+    const meals = await Meal.find({'tags.tag': tag});
+    ctx.body=meals;
+    ctx.status=200;
+  } catch (error) {
+    ctx.staus=500;
     console.error(error);
   }
 };

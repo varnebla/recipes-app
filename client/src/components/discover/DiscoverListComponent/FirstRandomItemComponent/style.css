@@ -1,18 +1,21 @@
-.card_recipe{
-  margin-bottom: 5vh
+.first_random_media{
+  max-width: 100%;
+  border-radius:5px;
+  transition: all 1s ease-out;
 }
 
-.first_random_item{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  height: 65vh;
-  width: 100%;
+.first_random_tile_bar{
+  background:linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.5) 60%,rgba(0,0,0,0.3) 80%,rgba(0,0,0,0) 100%) !important;
+  font-weight:700;
+  transition: all 1s ease-out;
+}
+.first_random_container:hover .first_random_media{
+  transform: scale(1.1,1.1);
 }
 
-.recipe_info{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: center;
+.first_random_container:hover .first_random_tile_bar{
+  height: 150px;
 }
+
+
+

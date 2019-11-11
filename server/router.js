@@ -11,6 +11,8 @@ router.get('/categories', categories.getCategories);
 router.get('/ingredients', ingredients.getIngredients);
 router.get('/listcat/:id', meal.getMealByCategory);
 router.get('/recipe/:id', meal.getMeal);
+router.get('/mealbying/:names', meal.getMealByIngredients);
+router.get('/mealbytag/:tags', meal.getMealByTag);
 
 router.post('/meal', meal.mealConverter);
 

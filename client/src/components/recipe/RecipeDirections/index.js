@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -26,7 +25,7 @@ function RecipeIngredients ({directions}) {
         expandIcon={<ExpandMoreIcon />}
         aria-controls="ingredients-content"
         id="ingredients-header">
-        <Typography variant="h5">Directions</Typography>                
+        <Typography variant="h6">Instructions</Typography>                
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <List>
